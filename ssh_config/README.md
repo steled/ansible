@@ -1,4 +1,8 @@
 # SSH config and user deploy Playbook
+- this playbook create local users with given ssh key
+- set ssh configuration
+- deploys locally created users to remote server
+
 ## file: users.yml
 - configuration file for users inclusive ssh key to be added
 
