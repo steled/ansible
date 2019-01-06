@@ -1,0 +1,6 @@
+# file: users.yml
+users:
+  - name: <user1>
+	key_file: <user1>.id_rsa.pub
+  - name: <user2>
+	key_file: <user2>.id_rsa.pub
