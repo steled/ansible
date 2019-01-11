@@ -15,7 +15,7 @@
       user:
         name: "{{ item.name }}"
         password: "*"
-        state: present
+        state: "{{ item.state }}"
         force: yes
         create_home: yes
         home: "/tmp/{{ item.name }}"
@@ -38,7 +38,7 @@
         key: "{{ lookup('file', '/home/{{ item.name }}/.ssh/authorized_keys') }}"
         manage_dir: no
         path: "/etc/ssh/authorized_keys"
-        state: present
+        state: "{{ item.state }}"
       with_items:
         - "{{ users }}"
 

@@ -15,7 +15,7 @@
         #ssh_key_file: ".ssh/{{ item.name }}.id_rsa"
         #ssh_key_comment: "{{ item.name }}"
         #ssh_key_type: rsa
-        state: present
+        state: "{{ item.state }}"
         force: yes
         create_home: yes
         shell: "/bin/bash"
@@ -30,13 +30,24 @@
         dest: "/etc/sudoers.d/{{ item.name }}"
       with_items:
         - "{{ users }}"
+      when:
+        - item.state == "present"
+
+    - name: remove local users from the sudoers
+      file:
+        path: "/etc/sudoers.d/{{ item.name }}"
+        state: absent
+      with_items:
+        - "{{ users }}"
+      when:
+        - item.state == "absent"
 
     - name: add ssh keys
       authorized_key:
         user: "{{ item.name }}"
         key: "{{ lookup('file', '{{ item.key_file }}') }}"
         manage_dir: yes
-        state: present
+        state: "{{ item.state }}"
       with_items:
         - "{{ users }}"
       when:
