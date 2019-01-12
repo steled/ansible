@@ -59,8 +59,7 @@
 
     - stat:
         path: /etc/ssh/authorized_keys
-      register:
-        - auth_keys
+      register: auth_keys
 
     - name: create authorized_keys file
       file:
