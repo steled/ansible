@@ -57,19 +57,19 @@
       when:
         - item.state == "present"
 
-    - stat:
-        path: /etc/ssh/authorized_keys
-      register: auth_keys
+    #- stat:
+        #path: /etc/ssh/authorized_keys
+      #register: auth_keys
 
-    - name: create authorized_keys file
-      file:
-        path: /etc/ssh/authorized_keys
-        state: touch
-        owner: root
-        group: root
-        mode: 0644
-      when:
-        - auth_keys.stat.pw_name != "root"
+    #- name: create authorized_keys file
+      #file:
+        #path: /etc/ssh/authorized_keys
+        #state: touch
+        #owner: root
+        #group: root
+        #mode: 0644
+      #when:
+        #- auth_keys.stat.pw_name != "root"
 
     - name: enable ssh AuthorizedKeysFile
       lineinfile:
