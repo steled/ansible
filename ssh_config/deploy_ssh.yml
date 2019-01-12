@@ -75,7 +75,7 @@
       lineinfile:
         path: /etc/ssh/sshd_config
         regexp: "^#AuthorizedKeysFile"
-        line: "AuthorizedKeysFile      /etc/ssh/authorized_keys"
+        line: "AuthorizedKeysFile      .ssh/authorized_keys"
         state: present
         backrefs: yes
         backup: yes
