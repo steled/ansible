@@ -17,6 +17,7 @@
         #ssh_key_type: rsa
         state: "{{ item.state }}"
         force: yes
+        remove: yes
         create_home: yes
         shell: "/bin/bash"
         groups: sudo
