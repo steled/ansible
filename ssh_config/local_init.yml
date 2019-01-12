@@ -51,6 +51,8 @@
         state: "{{ item.state }}"
       with_items:
         - "{{ users }}"
+      when:
+        - item.state == "present"
 
     - name: enable ssh AuthorizedKeysFile
       lineinfile:
