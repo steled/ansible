@@ -48,11 +48,14 @@
       authorized_key:
         user: "{{ item.name }}"
         key: "{{ lookup('file', '/home/{{ item.name }}/.ssh/authorized_keys') }}"
-        manage_dir: no
-        path: "/etc/ssh/authorized_keys"
+        #manage_dir: no
+        manage_dir: yes
+        #path: "/etc/ssh/authorized_keys"
         state: "{{ item.state }}"
       with_items:
         - "{{ users }}"
+      when:
+        - item.state == "present"
 
     - stat:
         path: /etc/ssh/authorized_keys
