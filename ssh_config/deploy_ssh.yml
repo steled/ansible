@@ -31,6 +31,17 @@
         dest: "/etc/sudoers.d/{{ item.name }}"
       with_items:
         - "{{ users }}"
+      when:
+        - item.state == "present"
+
+    - name: remove deployed users from the sudoers
+      file:
+        path: "/etc/sudoers.d/{{ item.name }}"
+        state: absent
+      with_items:
+        - "{{ users }}"
+      when:
+        - item.state == "absent"
 
     - name: deploy ssh keys
       authorized_key:

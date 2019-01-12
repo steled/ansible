@@ -45,7 +45,8 @@
     - name: add ssh keys
       authorized_key:
         user: "{{ item.name }}"
-        key: "{{ lookup('file', '{{ item.key_file }}') }}"
+        #key: "{{ lookup('file', '{{ item.key_file }}') }}"
+        key: "{{ item.key }}"
         manage_dir: yes
         state: "{{ item.state }}"
       with_items:
