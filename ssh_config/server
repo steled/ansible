@@ -1,1 +1,1 @@
-<hostname> ansible_host=<ansible>9 ansible_python_interpreter=/usr/bin/python3
+<hostname> ansible_host=<host_ip_address> ansible_python_interpreter=/usr/bin/python3
