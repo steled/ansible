@@ -17,6 +17,7 @@
         password: "*"
         state: "{{ item.state }}"
         force: yes
+        remove: yes
         create_home: yes
         home: "/tmp/{{ item.name }}"
         shell: "/bin/bash"
