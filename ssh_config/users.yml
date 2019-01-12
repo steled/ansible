@@ -2,9 +2,9 @@
 users:
   - name: <user1>
     #key_file: <user1>.id_rsa.pub
-    key: <ssh_key>
+    key: "<ssh_key>"
     state: present
   - name: <user2>
     #key_file: <user2>.id_rsa.pub
-    key: <ssh_key>
+    key: "<ssh_key>"
     state: present
