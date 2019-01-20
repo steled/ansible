@@ -19,7 +19,7 @@
         force: yes
         remove: yes
         create_home: yes
-        home: "/tmp/{{ item.name }}"
+        #home: "/tmp/{{ item.name }}"
         shell: "/bin/bash"
         groups: sudo
         append: yes
@@ -47,7 +47,8 @@
     - name: deploy ssh keys
       authorized_key:
         user: "{{ item.name }}"
-        key: "{{ lookup('file', '/home/{{ item.name }}/.ssh/authorized_keys') }}"
+        #key: "{{ lookup('file', '/home/{{ item.name }}/.ssh/authorized_keys') }}"
+        key: "{{ item.key }}"
         #manage_dir: no
         manage_dir: yes
         #path: "/etc/ssh/authorized_keys"
