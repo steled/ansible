@@ -1,10 +1,10 @@
 # file: users.yml
 users:
   - name: <user1>
-    #key_file: <user1>.id_rsa.pub
-    key: "<ssh_key>"
     state: present
   - name: <user2>
-    #key_file: <user2>.id_rsa.pub
     key: "<ssh_key>"
+    state: present
+  - name: test3
+    key_file: /tmp/<user3>.id_rsa.pub
     state: present

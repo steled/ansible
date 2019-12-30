@@ -4,15 +4,20 @@
 - deploys locally created users to remote server
 
 ## file: users.yml
-- configuration file for users inclusive ssh key to be added
+- configuration file for users
+- user can be added without predefined ssh key
+- user can be added with predefined ssh key
+- user can be added with ssh key file
 
 ## file: server
 - defined server for playbook
 
 ## file: local_init.yml
-- create users from *users.yml* locally
-- add users to sudoers
-- add ssh keys
+- create user from *users.yml* locally
+- add user to sudoers
+- add ssh key
+
+## file: set_ssh_config.yml
 - set ssh configuration
     - enable ssh AuthorizedKeysFile
     - enable ssh PubkeyAuthentication
@@ -22,7 +27,7 @@
     - disable ssh PermitEmptyPasswords
     - disable ssh PermitRootLogin
 
-## file: deploy_ssh.vml
+## file: deploy_ssh.yml
 - deploy users from *users.yml* remotely
 - add deployed users to the sudoers
 - deploy ssh keys
