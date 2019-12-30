@@ -61,7 +61,18 @@
       when:
         - item.state == "absent"
 
-    - name: add ssh key_file
+    - name: add generated ssh key from file
+      authorized_key:
+        user: "{{ item.name }}"
+        key: "{{ lookup('file', '/home/{{ item.name }}/.ssh/{{ item.name }}.id_rsa.pub') }}"
+        manage_dir: yes
+        state: "{{ item.state }}"
+      with_items:
+        - "{{ users }}"
+      when:
+        - item.key_file is undefined and item.key is undefined
+
+    - name: add predefined ssh key from file
       authorized_key:
         user: "{{ item.name }}"
         key: "{{ lookup('file', '{{ item.key_file }}') }}"
@@ -70,9 +81,9 @@
       with_items:
         - "{{ users }}"
       when:
-        - item.state == "present" and item.key_file is defined
+        - item.key_file is defined
 
-    - name: add ssh key
+    - name: add predefined ssh key
       authorized_key:
         user: "{{ item.name }}"
         key: "{{ item.key }}"
@@ -81,4 +92,4 @@
       with_items:
         - "{{ users }}"
       when:
-        - item.state == "present" and item.key is defined
+        - item.key is defined
