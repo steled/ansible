@@ -37,7 +37,7 @@
       notify:
         - restart ssh
 
-    - name: enable ssh PasswordAuthentication for user deploy
+    - name: enable ssh PasswordAuthentication for user root
       lineinfile:
         path: /etc/ssh/sshd_config
         insertafter: EOF
@@ -45,7 +45,7 @@
         state: present
         backup: yes
       with_items:
-        - "Match User deploy"
+        - "Match User root"
         - "        PasswordAuthentication yes"
       notify:
         - restart ssh
